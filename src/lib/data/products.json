@@ -1,0 +1,100 @@
+[
+  {
+    "id": "iphone-16",
+    "name": "iPhone 16",
+    "brand": "Apple",
+    "category": "Smartphones",
+    "images": [
+      "https://images.unsplash.com/photo-1697284959429-d6f8a97e0dc1?w=800&q=80"
+    ],
+    "basePriceInr": 79900,
+    "description": "Apple's latest iPhone with the A18 chip, a 48MP camera system, and all-day battery life. Available in multiple finishes and storage options.",
+    "rating": 4.7,
+    "variants": [
+      { "id": "iphone-16-128-black", "label": "128GB · Black", "priceInr": 79900, "inStock": true },
+      { "id": "iphone-16-256-black", "label": "256GB · Black", "priceInr": 89900, "inStock": true },
+      { "id": "iphone-16-256-pink", "label": "256GB · Pink", "priceInr": 89900, "inStock": false }
+    ]
+  },
+  {
+    "id": "galaxy-s24",
+    "name": "Galaxy S24",
+    "brand": "Samsung",
+    "category": "Smartphones",
+    "images": [
+      "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80"
+    ],
+    "basePriceInr": 74999,
+    "description": "Samsung's flagship with Galaxy AI features, a 50MP triple camera setup, and a bright Dynamic AMOLED 2X display.",
+    "rating": 4.5,
+    "variants": [
+      { "id": "s24-128-gray", "label": "128GB · Onyx Gray", "priceInr": 74999, "inStock": true },
+      { "id": "s24-256-violet", "label": "256GB · Cobalt Violet", "priceInr": 82999, "inStock": true }
+    ]
+  },
+  {
+    "id": "pixel-9",
+    "name": "Pixel 9",
+    "brand": "Google",
+    "category": "Smartphones",
+    "images": [
+      "https://images.unsplash.com/photo-1598965675045-45c5e72c7d05?w=800&q=80"
+    ],
+    "basePriceInr": 64999,
+    "description": "Clean Android experience with Google's best-in-class computational photography and Tensor G4 chip.",
+    "rating": 4.4,
+    "variants": [
+      { "id": "pixel9-128-obsidian", "label": "128GB · Obsidian", "priceInr": 64999, "inStock": true },
+      { "id": "pixel9-256-obsidian", "label": "256GB · Obsidian", "priceInr": 71999, "inStock": true }
+    ]
+  },
+  {
+    "id": "oneplus-13",
+    "name": "OnePlus 13",
+    "brand": "OnePlus",
+    "category": "Smartphones",
+    "images": [
+      "https://images.unsplash.com/photo-1601972602288-3be527b4f18a?w=800&q=80"
+    ],
+    "basePriceInr": 69999,
+    "description": "Snapdragon 8 Elite performance, Hasselblad-tuned cameras, and 100W fast charging for power users.",
+    "rating": 4.6,
+    "variants": [
+      { "id": "op13-256-black", "label": "256GB · Midnight Black", "priceInr": 69999, "inStock": true },
+      { "id": "op13-512-black", "label": "512GB · Midnight Black", "priceInr": 76999, "inStock": true },
+      { "id": "op13-512-blue", "label": "512GB · Arctic Blue", "priceInr": 76999, "inStock": true }
+    ]
+  },
+  {
+    "id": "redmi-note-14",
+    "name": "Redmi Note 14 Pro",
+    "brand": "Xiaomi",
+    "category": "Smartphones",
+    "images": [
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80"
+    ],
+    "basePriceInr": 24999,
+    "description": "A value-focused mid-ranger with a curved AMOLED display, 200MP camera, and fast charging.",
+    "rating": 4.2,
+    "variants": [
+      { "id": "rn14-128-gray", "label": "128GB · Titanium Gray", "priceInr": 24999, "inStock": true },
+      { "id": "rn14-256-gray", "label": "256GB · Titanium Gray", "priceInr": 27999, "inStock": true }
+    ]
+  },
+  {
+    "id": "nothing-phone-3",
+    "name": "Nothing Phone (3)",
+    "brand": "Nothing",
+    "category": "Smartphones",
+    "images": [
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff98?w=800&q=80"
+    ],
+    "basePriceInr": 44999,
+    "description": "Distinctive transparent design with Glyph Interface, paired with capable mid-range performance.",
+    "rating": 4.1,
+    "variants": [
+      { "id": "np3-256-white", "label": "256GB · White", "priceInr": 44999, "inStock": true },
+      { "id": "np3-256-black", "label": "256GB · Black", "priceInr": 44999, "inStock": true }
+    ]
+  }
+]
