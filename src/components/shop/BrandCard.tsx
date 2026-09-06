@@ -20,9 +20,9 @@ export function BrandCard({ brand, onClick }: BrandCardProps) {
     <button
       type="button"
       onClick={() => onClick?.(brand.id)}
-      className="flex flex-col items-center gap-2 rounded-card bg-white p-4 text-center shadow-card transition-shadow hover:shadow-md active:scale-[0.97]"
+      className="flex w-full items-center gap-3 rounded-[18px] border border-zinc-200 bg-white p-3.5 text-left shadow-[0_2px_6px_rgba(20,14,50,0.04)] transition-shadow hover:shadow-[0_6px_16px_rgba(20,14,50,0.06)]"
     >
-      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-gray-50">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
         <ImageWithFallback
           src={brand.logo}
           alt={brand.name}
@@ -30,8 +30,10 @@ export function BrandCard({ brand, onClick }: BrandCardProps) {
           className="h-full w-full object-contain p-2"
         />
       </div>
-      <p className="text-[13px] font-semibold text-gray-900">{brand.name}</p>
-      <p className="text-[11px] text-gray-400 leading-snug">{brand.tagline}</p>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-[15px] font-semibold text-gray-900">{brand.name}</p>
+        <p className="truncate text-[13px] text-gray-500">{brand.tagline}</p>
+      </div>
     </button>
   );
 }
@@ -43,10 +45,13 @@ interface BrandGridProps {
 
 export function BrandGrid({ brands, onBrandClick }: BrandGridProps) {
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="flex flex-col gap-3">
       {brands.map((brand) => (
         <BrandCard key={brand.id} brand={brand} onClick={onBrandClick} />
       ))}
     </div>
   );
 }
+
+export const BrandList = BrandGrid;
+export const BrandListItem = BrandCard;

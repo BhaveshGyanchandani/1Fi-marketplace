@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ShopShell } from '../../components/shop/ShopShell';
 import { SearchBar } from '../../components/shop/SearchBar';
-import { BrandGrid } from '../../components/shop/BrandCard';
+import { BrandList } from '../../components/shop/BrandCard';
 import type { Brand } from '../../lib/types';
 import brandsJson from '../../lib/data/brands.json';
 
@@ -24,7 +24,7 @@ export function TopBrandsPage() {
       </div>
 
       <div className="pt-3">
-        <BrandGrid brands={brands} onBrandClick={handleBrandClick} />
+        <BrandList brands={brands} onBrandClick={handleBrandClick} />
       </div>
 
       {toast && (
