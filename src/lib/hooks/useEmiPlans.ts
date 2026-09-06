@@ -25,24 +25,36 @@ export function useEmiPlans(
     if (!productId || !variantId) {
       setData(null);
       setIsLoading(false);
+      setError(null);
       return;
     }
 
+    const pid = productId;
+    const vid = variantId;
     let cancelled = false;
 
     async function load() {
       setIsLoading(true);
       setError(null);
-      const result = await fetchEmiPlans(productId!, variantId!);
-      if (cancelled) return;
 
-      if (isApiError(result)) {
-        setError(result.error);
-        setData(null);
-      } else {
-        setData(result.data);
+      try {
+        const result = await fetchEmiPlans(pid, vid);
+        if (cancelled) return;
+
+        if (isApiError(result)) {
+          setError(result.error);
+          setData(null);
+        } else {
+          setData(result.data);
+        }
+      } catch {
+        if (!cancelled) {
+          setError('Something went wrong while loading EMI plans.');
+          setData(null);
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
       }
-      setIsLoading(false);
     }
 
     load();

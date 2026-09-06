@@ -1,14 +1,11 @@
 import { ShopShell } from '../../components/shop/ShopShell';
 import { SearchBar } from '../../components/shop/SearchBar';
-import { EmptyState } from '../../components/ui/EmptyState';
+import { StoreList } from '../../components/shop/StoreListItem';
+import type { Store } from '../../lib/types';
+import storesJson from '../../lib/data/stores.json';
 
-/**
- * Per the assignment brief: "No implementation is required. The page can
- * remain blank." This stub exists only so the tab bar has a complete
- * destination — it is intentionally not built out. The search bar and
- * location chip are shown for shell/visual consistency with the reference
- * screenshots; neither is wired to real store data.
- */
+const stores = storesJson as Store[];
+
 export function NearbyStoresPage() {
   return (
     <ShopShell searchSlot={<SearchBar placeholder="Search stores..." />}>
@@ -22,7 +19,7 @@ export function NearbyStoresPage() {
             </svg>
           </span>
         </div>
-        <EmptyState title="No matching stores found" subtitle="Try a different location." icon="📍" />
+        <StoreList stores={stores} />
       </div>
     </ShopShell>
   );

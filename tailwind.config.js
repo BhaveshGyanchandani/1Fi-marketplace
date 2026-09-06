@@ -1,10 +1,8 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        // Verified brand color from live 1Fi app (see docs/SKILL.md)
         primary: {
           DEFAULT: '#712CDC',
           50: '#F4EEFC',

@@ -6,18 +6,9 @@ const TABS = [
   { label: '1Fi Marketplace', path: '/shop/marketplace' },
 ] as const;
 
-/**
- * Matches the real 1Fi Shop page's pill-style tab switcher (verified against
- * the reference screenshots and the real app's exact classes): a
- * bordered, tinted-lavender track with its own subtle shadow, a white pill
- * behind the active tab (own two-layer shadow), and a short purple
- * underline bar centered beneath the active tab's label. Fixed 468x56
- * track — positioning/overlap with the hero banner is handled by the
- * wrapper in ShopShell.tsx.
- */
 export function ShopTabs() {
   return (
-    <div className="flex gap-2 rounded-full border border-[#ece5ff] bg-[#f5f0ff] p-1.5 shadow-[0_1px_3px_rgba(113,44,220,0.06)] w-[468px] h-[56px]">
+    <div className="flex w-full gap-2 rounded-full border border-[#ece5ff] bg-[#f5f0ff] p-1.5 shadow-[0_1px_3px_rgba(113,44,220,0.06)] h-14">
       {TABS.map((tab) => (
         <NavLink
           key={tab.path}

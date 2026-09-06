@@ -2,29 +2,27 @@ interface SkeletonProps {
   className?: string;
 }
 
-/** A single pulsing placeholder block. Compose these to build skeleton layouts. */
 export function Skeleton({ className = '' }: SkeletonProps) {
   return <div className={`animate-pulse rounded-md bg-gray-200 ${className}`} />;
 }
 
-export function ProductCardSkeleton() {
+export function MarketplaceListItemSkeleton() {
   return (
-    <div className="rounded-card bg-white shadow-card overflow-hidden">
-      <Skeleton className="h-36 w-full rounded-none" />
-      <div className="p-3 space-y-2">
+    <div className="flex w-full items-center gap-3 rounded-[18px] border border-zinc-200 bg-white p-3.5">
+      <Skeleton className="h-16 w-16 rounded-xl shrink-0" />
+      <div className="min-w-0 flex-1 space-y-2">
+        <Skeleton className="h-4 w-2/3" />
         <Skeleton className="h-3 w-1/3" />
-        <Skeleton className="h-4 w-4/5" />
-        <Skeleton className="h-3 w-2/5" />
       </div>
     </div>
   );
 }
 
-export function ProductGridSkeleton({ count = 6 }: { count?: number }) {
+export function MarketplaceListSkeleton({ count = 6 }: { count?: number }) {
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="flex flex-col gap-3">
       {Array.from({ length: count }).map((_, i) => (
-        <ProductCardSkeleton key={i} />
+        <MarketplaceListItemSkeleton key={i} />
       ))}
     </div>
   );

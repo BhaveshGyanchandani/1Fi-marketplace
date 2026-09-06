@@ -8,10 +8,6 @@ interface ConfirmationSummaryProps {
   onDone: () => void;
 }
 
-/**
- * No real checkout backend exists (per PROJECT.md scope) — this is an in-page
- * confirmation state, not a payment flow.
- */
 export function ConfirmationSummary({ product, variant, plan, onDone }: ConfirmationSummaryProps) {
   return (
     <div className="flex flex-col items-center text-center px-4 pt-10 pb-10">

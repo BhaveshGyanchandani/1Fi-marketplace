@@ -6,11 +6,6 @@ interface EMIPlanCardProps {
   onSelect: (planId: string) => void;
 }
 
-/**
- * Pure/presentational, reusable per SKILL.md. Foregrounds tenure and monthly
- * amount — not interest rate — since 1Fi's real EMI plans are 0% interest and
- * there's no credit-score framing in this product.
- */
 export function EMIPlanCard({ plan, isSelected, onSelect }: EMIPlanCardProps) {
   return (
     <button

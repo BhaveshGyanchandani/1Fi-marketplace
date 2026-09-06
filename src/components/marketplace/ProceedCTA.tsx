@@ -6,19 +6,10 @@ interface ProceedCTAProps {
   onProceed: () => void;
 }
 
-/**
- * Full-width primary CTA, pinned above the bottom nav. Disabled until both a
- * variant and an EMI plan are selected (ARCHITECTURE.md section 5). Styled
- * after the circular-icon-button + pill-CTA pairing on the real "Pay using
- * 1Fi" screen (reference Image 3) — a share icon on the left, an arrow on
- * the CTA — without copying that screen's amount-entry flow itself, since
- * this is a plan-first flow per the assignment brief, not an any-amount
- * payment flow.
- */
 export function ProceedCTA({ disabled, monthlyAmountInr, onProceed }: ProceedCTAProps) {
   return (
     <div className="fixed bottom-[80px] inset-x-0 bg-white border-t border-gray-100 px-4 py-3 z-10">
-      <div className="max-w-md mx-auto flex items-center gap-3">
+      <div className="max-w-[500px] mx-auto flex items-center gap-3">
         {monthlyAmountInr != null && (
           <div className="flex-shrink-0">
             <p className="text-[11px] text-gray-400 leading-none">Monthly</p>

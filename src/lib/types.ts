@@ -1,35 +1,45 @@
-// Shared data models for the 1Fi Marketplace.
-// Imported everywhere — never redefined per component.
-
 export interface ProductVariant {
   id: string;
-  label: string; // e.g. "256GB · Titanium Black"
-  priceInr: number; // full price for this variant
+  label: string;
+  priceInr: number;
   inStock: boolean;
 }
 
 export interface Product {
   id: string;
-  name: string; // e.g. "iPhone 16"
-  brand: string; // e.g. "Apple"
-  category: string; // e.g. "Smartphones"
+  name: string;
+  brand: string;
+  category: string;
   images: string[];
-  basePriceInr: number; // lowest variant price, for listing display
+  basePriceInr: number;
   variants: ProductVariant[];
   description: string;
-  rating?: number; // out of 5, optional
+  rating?: number;
 }
 
 export interface EMIPlan {
   id: string;
-  tenureMonths: number; // 3–24 per 1Fi's real model
+  tenureMonths: number;
   monthlyAmountInr: number;
-  interestRatePercent: number; // 0 for no-cost EMI plans
+  interestRatePercent: number;
   totalPayableInr: number;
 }
 
-// Consistent response envelope so the frontend has one shape to branch on,
-// mirroring the { data } / { error } contract a real 1Fi backend would use.
+export interface Brand {
+  id: string;
+  name: string;
+  logo: string;
+  tagline: string;
+}
+
+export interface Store {
+  id: string;
+  name: string;
+  address: string;
+  distanceKm: number;
+  image: string;
+}
+
 export interface ApiSuccess<T> {
   data: T;
 }

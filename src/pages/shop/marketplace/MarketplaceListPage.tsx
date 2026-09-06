@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { ShopShell } from '../../../components/shop/ShopShell';
 import { SearchBar } from '../../../components/shop/SearchBar';
-import { ProductGrid } from '../../../components/marketplace/ProductGrid';
-import { ProductGridSkeleton } from '../../../components/ui/Skeleton';
+import { MarketplaceList } from '../../../components/marketplace/MarketplaceListItem';
+import { MarketplaceListSkeleton } from '../../../components/ui/Skeleton';
 import { ErrorState } from '../../../components/ui/ErrorState';
 import { EmptyState } from '../../../components/ui/EmptyState';
 import { useProducts } from '../../../lib/hooks/useProducts';
@@ -11,7 +11,6 @@ export function MarketplaceListPage() {
   const { data: products, isLoading, error, refetch } = useProducts();
   const [query, setQuery] = useState('');
 
-  // Real filtering (not just a visual search bar) — matches on name or brand.
   const filteredProducts = useMemo(() => {
     if (!products) return products;
     const q = query.trim().toLowerCase();
@@ -31,7 +30,7 @@ export function MarketplaceListPage() {
       </div>
 
       <div className="pt-3">
-        {isLoading && <ProductGridSkeleton />}
+        {isLoading && <MarketplaceListSkeleton />}
 
         {!isLoading && error && (
           <ErrorState message="Couldn't load products." onRetry={refetch} />
@@ -49,7 +48,7 @@ export function MarketplaceListPage() {
         )}
 
         {!isLoading && !error && filteredProducts && filteredProducts.length > 0 && (
-          <ProductGrid products={filteredProducts} />
+          <MarketplaceList products={filteredProducts} />
         )}
       </div>
     </ShopShell>

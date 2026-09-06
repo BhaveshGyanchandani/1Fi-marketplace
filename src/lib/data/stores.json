@@ -1,0 +1,30 @@
+[
+  {
+    "id": "store-1",
+    "name": "Reliance Digital - Ajmer",
+    "address": "Kutchery Road, Ajmer",
+    "distanceKm": 1.2,
+    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=80"
+  },
+  {
+    "id": "store-2",
+    "name": "Croma - Vaishali Nagar",
+    "address": "Vaishali Nagar, Ajmer",
+    "distanceKm": 2.4,
+    "image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=80"
+  },
+  {
+    "id": "store-3",
+    "name": "Sangam Mobile Store",
+    "address": "Station Road, Ajmer",
+    "distanceKm": 0.8,
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80"
+  },
+  {
+    "id": "store-4",
+    "name": "Vijay Sales - Ajmer",
+    "address": "Ana Sagar Circular Road, Ajmer",
+    "distanceKm": 3.1,
+    "image": "https://images.unsplash.com/photo-1571867424488-4565932edb41?w=400&q=80"
+  }
+]

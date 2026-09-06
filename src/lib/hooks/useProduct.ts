@@ -20,26 +20,37 @@ export function useProduct(productId: string | undefined): UseProductResult {
 
   useEffect(() => {
     if (!productId) {
+      setData(null);
       setIsLoading(false);
       setError('No product specified.');
       return;
     }
 
+    const id = productId;
     let cancelled = false;
 
     async function load() {
       setIsLoading(true);
       setError(null);
-      const result = await fetchProductById(productId!);
-      if (cancelled) return;
 
-      if (isApiError(result)) {
-        setError(result.error);
-        setData(null);
-      } else {
-        setData(result.data);
+      try {
+        const result = await fetchProductById(id);
+        if (cancelled) return;
+
+        if (isApiError(result)) {
+          setError(result.error);
+          setData(null);
+        } else {
+          setData(result.data);
+        }
+      } catch {
+        if (!cancelled) {
+          setError('Something went wrong while loading this product.');
+          setData(null);
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
       }
-      setIsLoading(false);
     }
 
     load();

@@ -6,8 +6,6 @@ interface NavItem {
   active?: boolean;
 }
 
-// Simple inline icons keep this component dependency-free (per SKILL.md's
-// "presentational, no new dependency" convention for shared shells).
 const icons = {
   home: (
     <path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1v-7.5Z" />
@@ -49,14 +47,6 @@ function NavIcon({ name, active }: { name: keyof typeof icons; active?: boolean 
   );
 }
 
-/**
- * Home / Shop / EMI Dues / Limit / Profile — confirmed order from the real
- * app (docs/SKILL.md). Fixed to the viewport bottom so it's always visible
- * and clickable regardless of scroll position — this sits OUTSIDE
- * ShopShell's 500x1544.39 content wrapper for that reason (a fixed-position
- * element ignores an ancestor's height/overflow anyway, so nesting it there
- * bought nothing and cost the always-visible behavior).
- */
 export function BottomNav({ active = 'Shop' }: { active?: NavItem['label'] }) {
   const items: NavItem[] = [
     { label: 'Home', icon: <NavIcon name="home" active={active === 'Home'} /> },

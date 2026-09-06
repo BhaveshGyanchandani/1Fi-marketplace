@@ -18,7 +18,7 @@ interface ProceedCTAProps {
 export function ProceedCTA({ disabled, monthlyAmountInr, onProceed }: ProceedCTAProps) {
   return (
     <div className="fixed bottom-[80px] inset-x-0 bg-white border-t border-gray-100 px-4 py-3 z-10">
-      <div className="max-w-md mx-auto flex items-center gap-3">
+      <div className="max-w-[500px] mx-auto flex items-center gap-3">
         {monthlyAmountInr != null && (
           <div className="flex-shrink-0">
             <p className="text-[11px] text-gray-400 leading-none">Monthly</p>

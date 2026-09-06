@@ -10,14 +10,6 @@ import { ErrorState } from '../../../components/ui/ErrorState';
 import { useProduct } from '../../../lib/hooks/useProduct';
 import { useEmiPlans } from '../../../lib/hooks/useEmiPlans';
 
-/**
- * State flow follows ARCHITECTURE.md section 5 exactly:
- * product loads -> selectedVariant defaults to first in-stock variant
- *               -> EMI plans re-fetch whenever selectedVariant changes
- *               -> selectedEmiPlan resets to null on variant change
- *               -> ProceedCTA disabled until both are selected
- *               -> CTA click -> confirmation state (no real checkout backend)
- */
 export function ProductDetailPage() {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
@@ -28,19 +20,22 @@ export function ProductDetailPage() {
   const [selectedPlanId, setSelectedPlanId] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
 
-  // Default to the first in-stock variant once the product loads.
   useEffect(() => {
-    if (product && !selectedVariantId) {
+    if (!product) return;
+    const variantExists = product.variants.some((v) => v.id === selectedVariantId);
+    if (!variantExists) {
       const firstInStock = product.variants.find((v) => v.inStock);
       setSelectedVariantId(firstInStock?.id ?? null);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product]);
+  }, [product, selectedVariantId]);
 
-  // Reset the selected plan whenever the variant changes.
   useEffect(() => {
     setSelectedPlanId(null);
   }, [selectedVariantId]);
+
+  useEffect(() => {
+    setConfirmed(false);
+  }, [productId]);
 
   const {
     data: emiPlans,
@@ -65,7 +60,7 @@ export function ProductDetailPage() {
     return (
       <div className="min-h-screen bg-[#F5F5F7] pb-24">
         <Header onBack={() => navigate('/shop/marketplace')} title="" />
-        <div className="max-w-md mx-auto px-4 pt-4">
+        <div className="max-w-[500px] mx-auto px-4 pt-4">
           <ProductDetailSkeleton />
         </div>
         <BottomNav active="Shop" />
@@ -102,7 +97,7 @@ export function ProductDetailPage() {
     <div className="min-h-screen bg-[#F5F5F7] pb-40">
       <Header onBack={() => navigate('/shop/marketplace')} title={product.name} />
 
-      <div className="max-w-md mx-auto px-4 pt-4 space-y-5">
+      <div className="max-w-[500px] mx-auto px-4 pt-4 space-y-5">
         <div className="rounded-card overflow-hidden bg-gray-50 h-64">
           <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
         </div>
@@ -150,12 +145,10 @@ export function ProductDetailPage() {
   );
 }
 
-// Plain back-arrow + bold title, matching the "Pay using 1Fi" header pattern
-// in the reference screenshot (Image 3) — no circular background chip.
 function Header({ title, onBack }: { title: string; onBack: () => void }) {
   return (
     <div className="sticky top-0 z-10 bg-[#F5F5F7]/95 backdrop-blur-sm px-4 pt-4 pb-3">
-      <div className="max-w-md mx-auto flex items-center gap-3">
+      <div className="max-w-[500px] mx-auto flex items-center gap-3">
         <button
           type="button"
           onClick={onBack}

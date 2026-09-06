@@ -4,12 +4,6 @@ interface SearchBarProps {
   onChange?: (value: string) => void;
 }
 
-/**
- * White pill search input matching the bar shown below the tabs on Top
- * Brands and Nearby Stores in the reference screenshots. Placeholder text is
- * a prop so each tab can use its own copy ("Search stores...",
- * "Search online stores...").
- */
 export function SearchBar({ placeholder, value, onChange }: SearchBarProps) {
   return (
     <div className="flex items-center gap-2.5 bg-white rounded-pill px-4 py-3 shadow-card">

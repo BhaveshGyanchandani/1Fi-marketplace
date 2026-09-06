@@ -24,16 +24,25 @@ export function useProducts(): UseProductsResult {
     async function load() {
       setIsLoading(true);
       setError(null);
-      const result = await fetchProducts();
-      if (cancelled) return;
 
-      if (isApiError(result)) {
-        setError(result.error);
-        setData(null);
-      } else {
-        setData(result.data);
+      try {
+        const result = await fetchProducts();
+        if (cancelled) return;
+
+        if (isApiError(result)) {
+          setError(result.error);
+          setData(null);
+        } else {
+          setData(result.data);
+        }
+      } catch {
+        if (!cancelled) {
+          setError('Something went wrong while loading products.');
+          setData(null);
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
       }
-      setIsLoading(false);
     }
 
     load();
