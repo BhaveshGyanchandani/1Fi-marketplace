@@ -139,6 +139,7 @@ export function ProductDetailPage() {
         disabled={!canProceed}
         monthlyAmountInr={selectedPlan?.monthlyAmountInr}
         onProceed={() => setConfirmed(true)}
+        shareTitle={product.name}
       />
       <BottomNav active="Shop" />
     </div>

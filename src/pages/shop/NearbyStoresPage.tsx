@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ShopShell } from '../../components/shop/ShopShell';
 import { SearchBar } from '../../components/shop/SearchBar';
 import { StoreList } from '../../components/shop/StoreListItem';
@@ -7,6 +8,14 @@ import storesJson from '../../lib/data/stores.json';
 const stores = storesJson as Store[];
 
 export function NearbyStoresPage() {
+  const [toast, setToast] = useState<string | null>(null);
+
+  function handleStoreClick(storeId: string) {
+    const store = stores.find((s) => s.id === storeId);
+    setToast(`${store?.name ?? 'This store'}'s page isn't available yet.`);
+    setTimeout(() => setToast(null), 2000);
+  }
+
   return (
     <ShopShell searchSlot={<SearchBar placeholder="Search stores..." />}>
       <div className="pt-4">
@@ -19,8 +28,16 @@ export function NearbyStoresPage() {
             </svg>
           </span>
         </div>
-        <StoreList stores={stores} />
+        <StoreList stores={stores} onStoreClick={handleStoreClick} />
       </div>
+
+      {toast && (
+        <div className="fixed bottom-[96px] inset-x-0 flex justify-center z-20 px-4">
+          <div className="bg-gray-900 text-white text-[13px] font-medium px-4 py-2.5 rounded-full shadow-lg">
+            {toast}
+          </div>
+        </div>
+      )}
     </ShopShell>
   );
 }

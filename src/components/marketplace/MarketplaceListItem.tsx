@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { Product } from '../../lib/types';
 import { cheapestMonthly } from '../../lib/mock-server/emiEngine';
+import { ImageWithFallback } from '../ui/ImageWithFallback';
 
 interface MarketplaceListItemProps {
   product: Product;
@@ -15,11 +16,11 @@ export function MarketplaceListItem({ product }: MarketplaceListItemProps) {
       className="flex w-full cursor-pointer items-center gap-3 rounded-[18px] border border-zinc-200 bg-white p-3.5 text-left shadow-[0_2px_6px_rgba(20,14,50,0.04)] transition-shadow hover:shadow-[0_6px_16px_rgba(20,14,50,0.06)]"
     >
       <div className="flex h-16 w-16 relative overflow-hidden rounded-xl border border-gray-200 items-center justify-center shrink-0 mr-2">
-        <img
+        <ImageWithFallback
           src={product.images[0]}
           alt={product.name}
+          fallbackLabel={product.name}
           className="h-full w-full object-cover"
-          loading="lazy"
         />
       </div>
 
